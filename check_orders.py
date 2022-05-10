@@ -55,10 +55,10 @@ if __name__ == '__main__':
         try:
             if get_orders(config['DEFAULT']['URL'], config['DEFAULT']['STORE_NAME']):
                 print("set pin TRUE")
-                # set_gpio(True)
+                set_gpio(True)
             else:
                 print("set pin FALSE")
-                # set_gpio(False)
+                set_gpio(False)
             time.sleep(int(config['DEFAULT']['SECONDS']))
         except Exception as e:
             print(e)

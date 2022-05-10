@@ -23,3 +23,9 @@ STORE_NAME = "My Awesome Store"
 ```
 
 ### Update the startup script
+`check_orders.sh`
+
+### Rpi.GPIO Errors
+Install Rpi.GPIO if it's not already installed.
+- `sudo apt-get update`
+- `sudo apt-get install rpi.gpio`

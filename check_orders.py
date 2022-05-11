@@ -11,7 +11,7 @@ config = configparser.ConfigParser()
 config.read(p.absolute())
 
 
-def get_orders(url, store=None):
+def get_orders(url, store_name=None):
     order_url = 'https://roostersroost.com/wp-json/hp/stores-info'
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0',
@@ -32,7 +32,8 @@ def get_orders(url, store=None):
         data = json.loads(url.read().decode())
     try:
         for store in data['stores']:
-            if store['store_name'] == store:
+        
+            if store['store_name'] == store_name:
                 print(f'store {data}')
                 return store['has_unconfirmed_orders']
     except Exception as e:

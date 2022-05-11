@@ -23,7 +23,11 @@ STORE_NAME = My Awesome Store
 ```
 
 ### Update the startup script
-`check_orders.sh`
+`/home/pi/pi_pizza/check_orders.sh`
+
+### Logging
+The Log is stored in `/home/pi/pi_pizza/check_orders.log`
+You can watch this file with `tail -f /home/pi/pi_pizza/check_orders.log`
 
 ### Rpi.GPIO Errors
 Install Rpi.GPIO if it's not already installed.

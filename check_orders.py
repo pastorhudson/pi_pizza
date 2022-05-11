@@ -6,14 +6,17 @@ import RPi.GPIO as GPIO
 from pathlib import Path
 import logging
 
-logging.basicConfig(level=logging.INFO, force=True, format = "%(asctime)s [%(levelname)s] %(message)s",
-                    handlers=[logging.FileHandler("check_orders.log"),
-                              logging.StreamHandler()
-                              ]
-                    )
+logging.basicConfig(handlers=[logging.FileHandler(filename="./check_orders.log",
+                                                 encoding='utf-8', mode='a+')],
+                    format="%(asctime)s %(name)s:%(levelname)s:%(message)s",
+                    datefmt="%F %A %T",
+                    level=logging.INFO)
 
-logger = logging.getLogger(__name__)
-
+# root_logger= logging.getLogger()
+# root_logger.setLevel(logging.DEBUG) # or whatever
+# handler = logging.FileHandler('check_orders.log', 'w', 'utf-8')
+# handler.setFormatter(logging.Formatter("%(asctime)s [%(levelname)s] %(message)s"))
+# root_logger.addHandler(handler)
 
 p = Path('./config.ini')
 config = configparser.ConfigParser()
@@ -43,10 +46,10 @@ def get_orders(url, store_name=None):
         
         for store in data['stores']:
             if store['store_name'] == store_name:
-                print(store)
+                logging.info(store)
                 return store['has_unconfirmed_orders']
     except Exception as e:
-        logger.debug(f'exception {data}')
+        logging.debug(f'exception {data}')
         return data['has_unconfirmed_orders']
 
 
@@ -64,13 +67,13 @@ if __name__ == '__main__':
     while True:
         try:
             if get_orders(config['DEFAULT']['URL'], config['DEFAULT']['STORE_NAME']):
-                logger.debug("set pin TRUE")
+                logging.debug("set pin TRUE")
                 set_gpio(True)
             else:
-                logger.debug("set pin FALSE")
+                logging.debug("set pin FALSE")
                 set_gpio(False)
             time.sleep(int(config['DEFAULT']['SECONDS']))
         except Exception as e:
-            logger.debug(f'exception {e}')
+            logging.debug(f'exception {e}')
 
             pass

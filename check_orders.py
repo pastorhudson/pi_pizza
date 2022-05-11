@@ -32,6 +32,7 @@ def get_orders(url, store_name=None):
         data = json.loads(url.read().decode())
     try:
         for store in data['stores']:
+            print(store_name, store)
         
             if store['store_name'] == store_name:
                 print(f'store {data}')

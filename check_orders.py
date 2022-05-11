@@ -36,6 +36,7 @@ def get_orders(url, store=None):
                 print(f'store {data}')
                 return store['has_unconfirmed_orders']
     except Exception as e:
+        print(type(e))
         print(f'exception {data}')
         return data['has_unconfirmed_orders']
 

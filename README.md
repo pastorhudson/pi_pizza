@@ -17,9 +17,9 @@ PIN = 14
 # How Many Seconds to Wait between Checking Email
 SECONDS = 10
 # URL To Check
-URL = 'https://redacted/wp-json/hp/stores-info'
+URL = https://redacted/wp-json/hp/stores-info
 # Store Name must match the json
-STORE_NAME = "My Awesome Store"
+STORE_NAME = My Awesome Store
 ```
 
 ### Update the startup script

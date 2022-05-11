@@ -32,7 +32,7 @@ def get_orders(url, store=None):
         data = json.loads(url.read().decode())
     try:
         for store in data['stores']:
-            if store['name'] == "Fat Angelo's West View, PA":
+            if store['name'] == store:
                 print(f'store {data}')
                 return store['has_unconfirmed_orders']
     except Exception as e:

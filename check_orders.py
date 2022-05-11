@@ -7,6 +7,7 @@ from pathlib import Path
 
 p = Path('/home/pi/pi_pizza/config.ini')
 p = Path('./config.ini')
+print(p.absolute())
 config = configparser.ConfigParser()
 config.read(p.absolute())
 

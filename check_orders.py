@@ -12,11 +12,6 @@ logging.basicConfig(handlers=[logging.FileHandler(filename="./check_orders.log",
                     datefmt="%F %A %T",
                     level=logging.INFO)
 
-# root_logger= logging.getLogger()
-# root_logger.setLevel(logging.DEBUG) # or whatever
-# handler = logging.FileHandler('check_orders.log', 'w', 'utf-8')
-# handler.setFormatter(logging.Formatter("%(asctime)s [%(levelname)s] %(message)s"))
-# root_logger.addHandler(handler)
 
 p = Path('./config.ini')
 config = configparser.ConfigParser()
@@ -67,10 +62,10 @@ if __name__ == '__main__':
     while True:
         try:
             if get_orders(config['DEFAULT']['URL'], config['DEFAULT']['STORE_NAME']):
-                logging.debug("set pin TRUE")
+                logging.info("set pin TRUE")
                 set_gpio(True)
             else:
-                logging.debug("set pin FALSE")
+                logging.info("set pin FALSE")
                 set_gpio(False)
             time.sleep(int(config['DEFAULT']['SECONDS']))
         except Exception as e:

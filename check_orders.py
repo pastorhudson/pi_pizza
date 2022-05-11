@@ -5,9 +5,7 @@ import configparser
 import RPi.GPIO as GPIO
 from pathlib import Path
 
-# p = Path('/home/pi/pi_pizza/config.ini')
 p = Path('./config.ini')
-print(p.absolute())
 config = configparser.ConfigParser()
 config.read(p.absolute())
 
@@ -35,6 +33,7 @@ def get_orders(url, store_name=None):
         
         for store in data['stores']:
             if store['store_name'] == store_name:
+                print(store)
                 return store['has_unconfirmed_orders']
     except Exception as e:
         print(f'exception {data}')
@@ -46,7 +45,7 @@ def set_gpio(status):
     GPIO.setmode(GPIO.BCM) # tell the Pi what headers to use
     GPIO.setup(int(config['DEFAULT']['PIN']), GPIO.OUT) # tell the Pi this pin is an output
 
-    # there are unread emails, turn light on
+    # there are unconfirmed orders, turn light on
     GPIO.output(int(config['DEFAULT']['PIN']), status)
 
 

@@ -12,7 +12,7 @@ config.read(p.absolute())
 
 
 def get_orders(url, store_name=None):
-    order_url = 'https://roostersroost.com/wp-json/hp/stores-info'
+    order_url = url
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',

@@ -2,7 +2,7 @@ import urllib.request
 import json
 import time
 import configparser
-# import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 from pathlib import Path
 
 p = Path('/home/pi/pi_pizza/config.ini')

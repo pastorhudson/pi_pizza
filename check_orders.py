@@ -6,7 +6,9 @@ import RPi.GPIO as GPIO
 from pathlib import Path
 import logging
 
-logging.basicConfig(handlers=[logging.FileHandler(filename="./check_orders.log",
+l = Path('./check_orders.log')
+
+logging.basicConfig(handlers=[logging.FileHandler(filename=l.absolute(),
                                                  encoding='utf-8', mode='a+')],
                     format="%(asctime)s %(name)s:%(levelname)s:%(message)s",
                     datefmt="%F %A %T",

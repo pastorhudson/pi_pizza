@@ -5,7 +5,7 @@ import configparser
 import RPi.GPIO as GPIO
 from pathlib import Path
 
-p = Path('/home/pi/pi_pizza/config.ini')
+# p = Path('/home/pi/pi_pizza/config.ini')
 p = Path('./config.ini')
 print(p.absolute())
 config = configparser.ConfigParser()

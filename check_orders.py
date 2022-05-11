@@ -32,9 +32,8 @@ def get_orders(url, store_name=None):
         data = json.loads(url.read().decode())
     try:
         print(store_name)
-        print(data['stores'])
+        print(data)
         for store in data['stores']:
-        
             if store['store_name'] == store_name:
                 print(f'store {data}')
                 return store['has_unconfirmed_orders']

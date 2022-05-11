@@ -4,6 +4,9 @@ import time
 import configparser
 import RPi.GPIO as GPIO
 from pathlib import Path
+import logging
+logging.basicConfig(filename='check_orders.log', encoding='utf-8', level=logging.DEBUG)
+
 
 p = Path('./config.ini')
 config = configparser.ConfigParser()
@@ -36,7 +39,7 @@ def get_orders(url, store_name=None):
                 print(store)
                 return store['has_unconfirmed_orders']
     except Exception as e:
-        print(f'exception {data}')
+        logging.debug(f'exception {data}')
         return data['has_unconfirmed_orders']
 
 
@@ -54,12 +57,13 @@ if __name__ == '__main__':
     while True:
         try:
             if get_orders(config['DEFAULT']['URL'], config['DEFAULT']['STORE_NAME']):
-                print("set pin TRUE")
+                logging.debug("set pin TRUE")
                 set_gpio(True)
             else:
-                print("set pin FALSE")
+                logging.debug("set pin FALSE")
                 set_gpio(False)
             time.sleep(int(config['DEFAULT']['SECONDS']))
         except Exception as e:
-            print(e)
+            logging.debug(f'exception {e}')
+
             pass

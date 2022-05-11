@@ -31,9 +31,9 @@ def get_orders(url, store_name=None):
     with urllib.request.urlopen(req) as url:
         data = json.loads(url.read().decode())
     try:
-        print(store_name)
-        print(data['stores'])
+        
         for store in data['stores']:
+        print(store)
             if store['store_name'] == store_name:
                 print(f'store {data}')
                 return store['has_unconfirmed_orders']

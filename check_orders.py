@@ -31,8 +31,8 @@ def get_orders(url, store_name=None):
     with urllib.request.urlopen(req) as url:
         data = json.loads(url.read().decode())
     try:
+        print(store_name)
         for store in data['stores']:
-            print(store_name, store)
         
             if store['store_name'] == store_name:
                 print(f'store {data}')

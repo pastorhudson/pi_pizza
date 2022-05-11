@@ -33,7 +33,7 @@ def get_orders(url, store_name=None):
     try:
         
         for store in data['stores']:
-        print(store)
+            print(store)
             if store['store_name'] == store_name:
                 print(f'store {data}')
                 return store['has_unconfirmed_orders']

@@ -16,9 +16,10 @@ logging.basicConfig(handlers=[logging.FileHandler(filename=l,
                     level=logging.INFO)
 
 
-p = Path('./config.ini')
+# p = Path('./config.ini')
+p = '/home/pi/pi_pizza/config.ini'
 config = configparser.ConfigParser()
-config.read(p.absolute())
+config.read(p)
 
 
 def get_orders(url, store_name=None):

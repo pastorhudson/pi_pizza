@@ -46,7 +46,7 @@ def get_orders(url, store_name=None):
                 logging.info(store)
                 return store['has_unconfirmed_orders']
     except Exception as e:
-        logging.debug(f'exception {data}')
+        logging.debug('exception %s', data)
         return data['has_unconfirmed_orders']
 
 
@@ -60,7 +60,7 @@ def set_gpio(status):
 
 
 if __name__ == '__main__':
-    print(f"Running & Output is stored in {l.absolute()}")
+    print("Running & Output is stored in %s", l.absolute())
     while True:
         try:
             if get_orders(config['DEFAULT']['URL'], config['DEFAULT']['STORE_NAME']):
@@ -71,6 +71,6 @@ if __name__ == '__main__':
                 set_gpio(False)
             time.sleep(int(config['DEFAULT']['SECONDS']))
         except Exception as e:
-            logging.debug(f'exception {e}')
+            logging.debug('exception %s', e)
 
             pass

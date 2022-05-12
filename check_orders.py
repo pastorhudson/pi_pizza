@@ -62,7 +62,7 @@ def set_gpio(status):
 
 
 if __name__ == '__main__':
-    print("Running & Output is stored in %s", l.absolute())
+    print("Running & Output is stored in %s", l)
     while True:
         try:
             if get_orders(config['DEFAULT']['URL'], config['DEFAULT']['STORE_NAME']):

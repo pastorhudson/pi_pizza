@@ -6,7 +6,8 @@ import RPi.GPIO as GPIO
 from pathlib import Path
 import logging
 
-l = Path('./check_orders.log')
+# l = Path('./check_orders.log')
+l = '/home/pi/pi_pizza/check_orders.log'
 
 logging.basicConfig(handlers=[logging.FileHandler(filename=l,
                                                  encoding='utf-8', mode='a+')],
